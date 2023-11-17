@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true">
+  <div id="tela">
+    <h3>{{resul}}</h3>
+    <h1>{{tudo}}</h1>
+    raizq {{raizq}}
+    <br>
+    raizcheck {{raizcheck}}
+    <br>
+     conta {{conta}}
+     <br>
+     {{raizqint}}
+  </div>
+  <ion-grid id="botoes">
+    <ion-row>
+      <ion-col>
+        <ion-button id="apagar" (click)="limpar()">C</ion-button>
+        <ion-button (click)="pi()">𝝅</ion-button>
+        <ion-button (click)="digitos('7')">7</ion-button>
+        <ion-button (click)="digitos('4')">4</ion-button>
+        <ion-button (click)="digitos('1')">1</ion-button>
+        <ion-button (click)="porcem()">%</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="elevado()">e^</ion-button>
+        <ion-button (click)="paren1()">(</ion-button>
+        <ion-button (click)="digitos('8')">8</ion-button>
+        <ion-button (click)="digitos('5')">5</ion-button>
+        <ion-button (click)="digitos('2')">2</ion-button>
+        <ion-button (click)="digitos('0')">0</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="raiz()">√</ion-button>
+        <ion-button (click)="paren2()">)</ion-button>
+        <ion-button (click)="digitos('9')">9</ion-button>
+        <ion-button (click)="digitos('6')">6</ion-button>
+        <ion-button (click)="digitos('3')">3</ion-button>
+        <ion-button (click)="ponto()">,</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="divi()">/</ion-button>
+        <ion-button (click)="multi()">x</ion-button>
+        <ion-button (click)="sub()">-</ion-button>
+        <ion-button (click)="soma()">+</ion-button>
+        <ion-button id="igual" (click)="resultado()">=</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
