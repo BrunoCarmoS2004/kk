@@ -53,3 +53,10 @@ h3 {
   --color: rgb(196, 0, 0);
   --border-color: rgb(196, 0, 0);
 }
+
+.io{
+    width: 100%;
+    text-overflow: inherit;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
