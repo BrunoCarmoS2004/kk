@@ -1,27 +1,98 @@
 <ion-content [fullscreen]="true">
- 
-  
-  <ion-menu contentId="main-content">
-    <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
-    </ion-toolbar>
-      <ion-list >
-        <ion-item class="oi" *ngFor="let d of data">
-          <ion-label>{{ d }}</ion-label>
-        </ion-item>
-      </ion-list>
-</ion-menu>
-<div class="ion-page" id="main-content">
-    <ion-toolbar>
-        <ion-menu-button></ion-menu-button>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-    <ion-infinite-scroll (ionInfinite)="(teste())">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-</div>
-<br>
-<br>
-<br>
-<ion-button (click)="teste()">Default</ion-button>
+  <div id="tela">
+    <h3>{{resul}}</h3>
+    <h1>{{tudo}}</h1>
+  </div>
+
+
+    <ion-menu contentId="main-content">
+        <ion-toolbar id="navhist">
+          <ion-title>Histórico</ion-title>
+        </ion-toolbar>
+        <div class="botaohist" (click)="digitosHistorico(resultados[5])">
+          <p>{{resultados[5]}}</p>
+          <p>{{contas[5]}}</p>
+        </div>
+        <hr class="hr">
+        <div class="botaohist" (click)="digitosHistorico(resultados[4])">
+          <p>{{resultados[4]}}</p>
+          <p>{{contas[4]}}</p>
+        </div>
+        <hr class="hr">
+        <div class="botaohist" (click)="digitosHistorico(resultados[3])">
+          <p>{{resultados[3]}}</p>
+          <p>{{contas[3]}}</p>
+        </div>
+        <hr class="hr">
+        <div class="botaohist" (click)="digitosHistorico(resultados[2])">
+          <p>{{resultados[2]}}</p>
+          <p>{{contas[2]}}</p>
+        </div>
+        <hr class="hr">
+        <div class="botaohist" (click)="digitosHistorico(resultados[1])">
+          <p>{{resultados[1]}}</p>
+          <p>{{contas[1]}}</p>
+        </div>
+        <hr class="hr">
+        <div class="botaohist" (click)="digitosHistorico(resultados[0])">
+          <p>{{resultados[0]}}</p>
+          <p>{{contas[0]}}</p>
+        </div>
+        <div class="botaohist" id="limpar" (click)="limparhist()">
+          <p>Limpar Histórico</p>
+        </div>
+    </ion-menu>
+
+
+  <div id="actions">
+    <div class="ion-page" id="main-content"></div>
+    <ion-menu-button class="action_buttom"><ion-img
+      src="assets\img\3643779_clock_hour_ticker_time_times_icon.png"
+      alt="histórico"
+    ></ion-img></ion-menu-button>
+    <ion-button class="action_buttom" id="delete" (click)="del()"><ion-img
+      src="assets\img\9035278_backspace_outline_icon.png"
+      alt="apagar"
+    ></ion-img></ion-button>
+  </div>
+
+
+  <hr id="hrcalc">
+
+
+  <ion-grid id="botoes">
+    <ion-row>
+      <ion-col>
+        <ion-button id="apagar" (click)="limpar()">C</ion-button>
+        <ion-button (click)="pi()" class="opera">𝝅</ion-button>
+        <ion-button (click)="digitos('7')" class="number">7</ion-button>
+        <ion-button (click)="digitos('4')" class="number">4</ion-button>
+        <ion-button (click)="digitos('1')" class="number">1</ion-button>
+        <ion-button (click)="porcem()" class="opera">%</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="elevado()" class="opera">e^</ion-button>
+        <ion-button (click)="paren1()" class="opera">(</ion-button>
+        <ion-button (click)="digitos('8')" class="number">8</ion-button>
+        <ion-button (click)="digitos('5')" class="number">5</ion-button>
+        <ion-button (click)="digitos('2')" class="number">2</ion-button>
+        <ion-button (click)="digitos('0')" class="number">0</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="raiz()" class="opera">√</ion-button>
+        <ion-button (click)="paren2()" class="opera">)</ion-button>
+        <ion-button (click)="digitos('9')" class="number">9</ion-button>
+        <ion-button (click)="digitos('6')" class="number">6</ion-button>
+        <ion-button (click)="digitos('3')" class="number">3</ion-button>
+        <ion-button (click)="ponto()" class="opera">,</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="divi()" class="opera">/</ion-button>
+        <ion-button (click)="multi()" class="opera">x</ion-button>
+        <ion-button (click)="sub()" class="opera">-</ion-button>
+        <ion-button (click)="soma()" class="opera">+</ion-button>
+        <ion-button id="igual" (click)="resultado()">=</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
