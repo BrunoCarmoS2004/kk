@@ -2,6 +2,7 @@
   <div id="tela">
     <h3>{{resul}}</h3>
     <h1>{{tudo}}</h1>
+    <h1>{{oi}}</h1>
   </div>
 
 
@@ -9,38 +10,18 @@
         <ion-toolbar id="navhist">
           <ion-title>Histórico</ion-title>
         </ion-toolbar>
-        <div class="botaohist" (click)="digitosHistorico(resultados[5])">
-          <p>{{resultados[5]}}</p>
-          <p>{{contas[5]}}</p>
-        </div>
-        <hr class="hr">
-        <div class="botaohist" (click)="digitosHistorico(resultados[4])">
-          <p>{{resultados[4]}}</p>
-          <p>{{contas[4]}}</p>
-        </div>
-        <hr class="hr">
-        <div class="botaohist" (click)="digitosHistorico(resultados[3])">
-          <p>{{resultados[3]}}</p>
-          <p>{{contas[3]}}</p>
-        </div>
-        <hr class="hr">
-        <div class="botaohist" (click)="digitosHistorico(resultados[2])">
-          <p>{{resultados[2]}}</p>
-          <p>{{contas[2]}}</p>
-        </div>
-        <hr class="hr">
-        <div class="botaohist" (click)="digitosHistorico(resultados[1])">
-          <p>{{resultados[1]}}</p>
-          <p>{{contas[1]}}</p>
-        </div>
-        <hr class="hr">
-        <div class="botaohist" (click)="digitosHistorico(resultados[0])">
-          <p>{{resultados[0]}}</p>
-          <p>{{contas[0]}}</p>
-        </div>
-        <div class="botaohist" id="limpar" (click)="limparhist()">
-          <p>Limpar Histórico</p>
-        </div>
+        <ion-list>
+          <ion-item>
+            <ion-select 
+            aria-label="Fruit"
+            placeholder="Select fruit"
+            (ionChange)="handleChange($event)">
+              <ion-select-option value=1>Apples</ion-select-option>
+              <ion-select-option value=2>Oranges</ion-select-option>
+              <ion-select-option value=3>Bananas</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
     </ion-menu>
 
 

@@ -25,11 +25,17 @@ export class HomePage {
   sinalcheck: number = 0
   resultados: string [] = []
   contas: string [] = []
+  oi:string = ""
 
 
   constructor() {}
 
-
+  handleChange(ev:any){
+    this.oi = JSON.parse(ev.target.value);
+    if(this.oi == "1"){
+      this.oi = "1000"
+    }
+  }
   limparhist(){
     for(var i = 0; i <= this.resultados.length; i++){
       this.resultados.pop()
