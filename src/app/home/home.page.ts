@@ -37,33 +37,6 @@ export class HomePage {
   constructor(private menu: MenuController) {}
 
 
-  alertButtons = ['CONCORDAR'];
-
-
-  func_limparhist(){
-    for(var i = 0; i <= this.calculosHist.length; i++){
-      this.calculosHist.pop()
-      this.resultadosHist.pop()
-    }
-    this.menu.close();
-  }
-
-
-  func_digitosHistorico(valor:string){
-    if (this.resultado == "0"){
-      this.resultado=""
-    }
-    if(valor == null){
-
-
-    }else{
-      this.resultado += valor
-      this.conta += valor
-    }
-    this.menu.close();
-  }
-
-
   func_digitos(valor: string){
     this.sinalcheck = 0
     if (this.reset == false){
@@ -250,14 +223,26 @@ export class HomePage {
 
 
   func_raiz(){
+    if (this.sinalcheck == 1){
+      this.resultado = this.resultado.slice(0, -1)
+      this.conta = this.conta.slice(0, -1)
+    }
+    if (this.sinalcheck == 2){
+      this.resultado = this.resultado.slice(0, -1)
+      this.conta = this.conta.slice(0, -2)
+    }
     if (this.reset == false){
       this.func_limpar()
     }
     if (this.resultado == "0"){
       this.resultado=""
     }
+    if (this.conta == "0"){
+      this.conta=""
+    }
     this.resultado += "√"
     this.raizCheck = true
+    this.sinalcheck = 1
   }
 
 
@@ -269,15 +254,6 @@ export class HomePage {
       }
       if (this.resultado == ""){
         this.resultado += 0
-      }
-    }
-    if (this.delNot == true){
-      if (this.digite != ""){
-        this.digite = this.digite.slice(0, -1)
-        this.conta = this.conta.slice(0, -1)
-      }
-      if (this.digite == ""){
-        this.digite += 0
       }
     }
   }
@@ -293,6 +269,7 @@ export class HomePage {
     this.conta = eval(this.conta)
     this.calculo = this.resultado
     this.resultado = "= "+this.conta
+    this.calculo = this.calculo.replace("=","")
     this.resultadosHist.unshift(this.resultado)
     this.calculosHist.unshift(this.calculo)
     this.reset = false
@@ -315,10 +292,42 @@ export class HomePage {
     this.raizCheck = false
     this.contaConversor = ""
   }
+ 
+  // Histórico ----
 
 
-  func_openRegua(){
-    this.menu.open('regua')
+  func_digitosHistorico(valor:string){
+    if (this.resultado == "0"){
+      this.resultado=""
+    }
+    if(valor == null){
+
+
+    }else{
+      this.resultado += valor
+      this.conta += valor
+    }
+    this.menu.close();
+  }
+
+
+  func_limparhist(){
+    for(var i = 0; i <= 100; i++){
+      this.calculosHist.pop()
+      this.resultadosHist.pop()
+    }
+    this.menu.close();
+  }
+
+
+  // Conversor ----
+
+
+  alertButtons = ['CONCORDAR'];
+
+
+  func_openConversor(){
+    this.menu.open('conversor')
   }
 
 
@@ -345,7 +354,8 @@ export class HomePage {
     this.select2 = JSON.parse(ev.target.value)
     this.numeroSelect2 = this.select2.toString()
   }
- 
+
+
   conversor(){
     switch(this.numeroSelect1){
       case '1':
