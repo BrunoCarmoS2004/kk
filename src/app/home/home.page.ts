@@ -33,6 +33,8 @@ export class HomePage {
   numeroSelect1: string = ""
   numeroSelect2: string = ""
   limphist: number = 0
+  pontocheck = 0
+
 
   constructor(private menu: MenuController) {}
 
@@ -78,6 +80,7 @@ export class HomePage {
       this.sinalcheck = 1
       this.delNot = false
       this.raizCheck = false
+      this.pontocheck = 0
   }
 
 
@@ -100,6 +103,7 @@ export class HomePage {
     this.sinalcheck = 1
     this.delNot = false
     this.raizCheck = false
+    this.pontocheck = 0
   }
 
 
@@ -122,6 +126,7 @@ export class HomePage {
     this.sinalcheck = 1
     this.delNot = false
     this.raizCheck = false
+    this.pontocheck = 0
   }
 
 
@@ -144,6 +149,7 @@ export class HomePage {
     this.sinalcheck = 1
     this.delNot = false
     this.raizCheck = false
+          this.pontocheck = 0
   }
 
 
@@ -160,11 +166,14 @@ export class HomePage {
 
 
   func_ponto(){
-    if (this.reset == false){
-      this.func_limpar()
+    if(this.pontocheck != 1 || !this.conta.includes('.')){
+      if (this.reset == false){
+        this.func_limpar()
+      }
+      this.resultado += ","
+      this.conta +='.'
+      this.pontocheck = 1
     }
-    this.resultado += ","
-    this.conta +='.'
   }
 
 
@@ -240,7 +249,6 @@ export class HomePage {
     if (this.conta == "0"){
       this.conta=""
     }
-    
     this.resultado += "√"
     this.raizCheck = true
     this.sinalcheck = 1
@@ -257,11 +265,19 @@ export class HomePage {
         this.resultado += 0
       }
     }
+    if (this.delNot == true){
+      if (this.digite != ""){
+        this.digite = this.digite.slice(0, -1)
+        this.conta = this.conta.slice(0, -1)
+      }
+      if (this.digite == ""){
+        this.digite += 0
+      }
+    }
   }
 
 
   func_resultado(){
-    
     if (this.raizCheck == true){
       this.conta += this.raizInt2
     }
@@ -271,15 +287,12 @@ export class HomePage {
     this.conta = eval(this.conta)
     this.calculo = this.resultado
     this.resultado = "= "+this.conta
-    
-    this.calculo = this.calculo.replace("=","")
     this.resultadosHist.unshift(this.resultado)
     this.calculosHist.unshift(this.calculo)
     this.reset = false
     this.delNot = true
     this.raizCheck = false
     this.limphist++
-    
   }
 
 
@@ -296,6 +309,7 @@ export class HomePage {
     this.delNot = false
     this.raizCheck = false
     this.contaConversor = ""
+    this.pontocheck = 0
   }
  
   // Histórico ----
@@ -322,7 +336,7 @@ export class HomePage {
       this.resultadosHist.pop()
     }
     this.menu.close();
-    this.limphist = 0 
+    this.limphist = 0
   }
 
 
