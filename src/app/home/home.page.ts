@@ -32,7 +32,7 @@ export class HomePage {
   inteiro: number = 0
   numeroSelect1: string = ""
   numeroSelect2: string = ""
-
+  limphist: number = 0
 
   constructor(private menu: MenuController) {}
 
@@ -240,6 +240,7 @@ export class HomePage {
     if (this.conta == "0"){
       this.conta=""
     }
+    this.conta += "*"
     this.resultado += "√"
     this.raizCheck = true
     this.sinalcheck = 1
@@ -275,6 +276,7 @@ export class HomePage {
     this.reset = false
     this.delNot = true
     this.raizCheck = false
+    this.limphist++
   }
 
 
@@ -312,11 +314,12 @@ export class HomePage {
 
 
   func_limparhist(){
-    for(var i = 0; i <= 100; i++){
+    for(var i = 0; i <= this.limphist; i++){
       this.calculosHist.pop()
       this.resultadosHist.pop()
     }
     this.menu.close();
+    this.limphist = 0 
   }
 
 
@@ -429,7 +432,7 @@ export class HomePage {
           break;
           case '2':
             // resultConversor = digite * 100
-            this.inteiro = parseInt(this.digite) * 10
+            this.inteiro = parseInt(this.digite) * 100
             this.contaConversor = this.inteiro.toString()
             this.resultConversor = this.contaConversor
           break;
