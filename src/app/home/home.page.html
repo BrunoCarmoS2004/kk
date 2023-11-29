@@ -1,37 +1,145 @@
 <ion-content [fullscreen]="true">
   <div id="tela">
-    <h3>{{resul}}</h3>
-    <h1>{{tudo}}</h1>
-    <h1>{{oi}}</h1>
+    <h3 id="resul_text">{{calculo}}</h3>
+    <h1 id="tudo_text">{{resultado}}</h1>
   </div>
 
 
-    <ion-menu contentId="main-content">
-        <ion-toolbar id="navhist">
-          <ion-title>Histórico</ion-title>
-        </ion-toolbar>
-        <ion-list>
-          <ion-item>
-            <ion-select 
-            aria-label="Fruit"
-            placeholder="Select fruit"
-            (ionChange)="handleChange($event)">
-              <ion-select-option value=1>Apples</ion-select-option>
-              <ion-select-option value=2>Oranges</ion-select-option>
-              <ion-select-option value=3>Bananas</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-    </ion-menu>
+  <ion-menu contentId="main-content">
+    <ion-toolbar>
+      <ion-title>Histórico</ion-title>
+    </ion-toolbar>
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[5])">
+      <p>{{calculosHist[5]}}</p>
+      <p>{{resultadosHist[5]}}</p>
+    </div>
+    <hr class="hrhist">
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[4])">
+      <p>{{calculosHist[4]}}</p>
+      <p>{{resultadosHist[4]}}</p>
+    </div>
+    <hr class="hrhist">
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[3])">
+      <p>{{calculosHist[3]}}</p>
+      <p>{{resultadosHist[3]}}</p>
+    </div>
+    <hr class="hrhist">
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[2])">
+      <p>{{calculosHist[2]}}</p>
+      <p>{{resultadosHist[2]}}</p>
+    </div>
+    <hr class="hrhist">
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[1])">
+      <p>{{calculosHist[1]}}</p>
+      <p>{{resultadosHist[1]}}</p>
+    </div>
+    <hr class="hrhist">
+    <div class="botaohist" (click)="func_digitosHistorico(calculosHist[0])">
+      <p>{{calculosHist[0]}}</p>
+      <p>{{resultadosHist[0]}}</p>
+    </div>
+    <div class="botaohist" id="limparhist" (click)="func_limparhist()">
+      <p>Limpar Histórico</p>
+    </div>
+  </ion-menu>
+   
+  <ion-menu menuId="regua" contentId="main-content">
+    <ion-toolbar>
+      <ion-title>Conversor</ion-title>
+    </ion-toolbar>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Selecione a medida" (ionChange)="var1($event)">
+          <ion-select-option value=1>Milímetros (mm)
+          </ion-select-option>
+          <ion-select-option value=2>Centímetros (cm)
+          </ion-select-option>
+          <ion-select-option value=3>Metros (m)
+          </ion-select-option>
+          <ion-select-option value=4>Polegadas (in)
+          </ion-select-option>
+          <ion-select-option value=5>Pés (ft)
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    <div class="div_text">
+      <p class="text_conversor">{{digite}}</p>
+    </div>
+      <ion-item>
+        <ion-select interface="popover" placeholder="Selecione a medida" (ionChange)="var2($event)">
+          <ion-select-option value=1>Milímetros (mm)
+          </ion-select-option>
+          <ion-select-option value=2>Centímetros (cm)
+          </ion-select-option>
+          <ion-select-option value=3>Metros (m)
+          </ion-select-option>
+          <ion-select-option value=4>Polegadas (in)
+          </ion-select-option>
+          <ion-select-option value=5>Pés (ft)
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    <div class="div_text">
+      <p class="text_conversor">{{resultConversor}}</p>
+    </div>
+
+
+    <ion-grid class="div_conversor">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="func_digitosConversor('7')" class="botao_conversor">7</ion-button>
+          <ion-button (click)="func_digitosConversor('4')" class="botao_conversor">4</ion-button>
+          <ion-button (click)="func_digitosConversor('1')" class="botao_conversor">1</ion-button>
+          <ion-button class="botao_conversor" id="botao_petri"></ion-button>
+          <ion-alert
+            trigger="botao_petri"
+            header="OI PETRI"
+            subHeader="Esse botão é só para você"
+            message="Nos dê nota por favor!"
+            [buttons]="alertButtons"
+          ></ion-alert>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="func_digitosConversor('8')" class="botao_conversor">8</ion-button>
+          <ion-button (click)="func_digitosConversor('5')" class="botao_conversor">5</ion-button>
+          <ion-button (click)="func_digitosConversor('2')" class="botao_conversor">2</ion-button>
+          <ion-button (click)="func_digitosConversor('0')" class="botao_conversor">0</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="func_digitosConversor('9')" class="botao_conversor">9</ion-button>
+          <ion-button (click)="func_digitosConversor('6')" class="botao_conversor">6</ion-button>
+          <ion-button (click)="func_digitosConversor('3')" class="botao_conversor">3</ion-button>
+          <ion-button (click)="func_ponto()" class="botao_conversor">,</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="func_del()" class="botao_conversor"><ion-img
+            src="assets\img\9035278_backspace_outline_icon.png"
+            alt="apagar"
+          ></ion-img></ion-button>
+          <ion-button id="apagar" (click)="func_limpar()" class="botao_conversor">C</ion-button>
+          <ion-button id="igual_conversor" (click)="conversor()" class="botao_conversor">=</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-menu>
 
 
   <div id="actions">
-    <div class="ion-page" id="main-content"></div>
+    <div class="ion-pageone" id="main-content"></div>
+    <div class="ion-pagetwo" id="main-content"></div>
+
+
     <ion-menu-button class="action_buttom"><ion-img
       src="assets\img\3643779_clock_hour_ticker_time_times_icon.png"
       alt="histórico"
     ></ion-img></ion-menu-button>
-    <ion-button class="action_buttom" id="delete" (click)="del()"><ion-img
+
+
+    <ion-menu-button (click)="func_openRegua()" class="action_buttom" id="action_conversor"><ion-img
+      src="assets\img\9034413_ruler_horizontal_icon.png"
+    ></ion-img></ion-menu-button>
+
+
+    <ion-button class="action_buttom" id="action_delete" (click)="func_del()"><ion-img
       src="assets\img\9035278_backspace_outline_icon.png"
       alt="apagar"
     ></ion-img></ion-button>
@@ -44,35 +152,35 @@
   <ion-grid id="botoes">
     <ion-row>
       <ion-col>
-        <ion-button id="apagar" (click)="limpar()">C</ion-button>
-        <ion-button (click)="pi()" class="opera">𝝅</ion-button>
-        <ion-button (click)="digitos('7')" class="number">7</ion-button>
-        <ion-button (click)="digitos('4')" class="number">4</ion-button>
-        <ion-button (click)="digitos('1')" class="number">1</ion-button>
-        <ion-button (click)="porcem()" class="opera">%</ion-button>
+        <ion-button id="apagar" (click)="func_limpar()">C</ion-button>
+        <ion-button (click)="func_pi()">𝝅</ion-button>
+        <ion-button (click)="func_digitos('7')">7</ion-button>
+        <ion-button (click)="func_digitos('4')">4</ion-button>
+        <ion-button (click)="func_digitos('1')">1</ion-button>
+        <ion-button (click)="func_porcem()">%</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="elevado()" class="opera">e^</ion-button>
-        <ion-button (click)="paren1()" class="opera">(</ion-button>
-        <ion-button (click)="digitos('8')" class="number">8</ion-button>
-        <ion-button (click)="digitos('5')" class="number">5</ion-button>
-        <ion-button (click)="digitos('2')" class="number">2</ion-button>
-        <ion-button (click)="digitos('0')" class="number">0</ion-button>
+        <ion-button (click)="func_elevado()">e^</ion-button>
+        <ion-button (click)="func_paren1()">(</ion-button>
+        <ion-button (click)="func_digitos('8')">8</ion-button>
+        <ion-button (click)="func_digitos('5')">5</ion-button>
+        <ion-button (click)="func_digitos('2')">2</ion-button>
+        <ion-button (click)="func_digitos('0')">0</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="raiz()" class="opera">√</ion-button>
-        <ion-button (click)="paren2()" class="opera">)</ion-button>
-        <ion-button (click)="digitos('9')" class="number">9</ion-button>
-        <ion-button (click)="digitos('6')" class="number">6</ion-button>
-        <ion-button (click)="digitos('3')" class="number">3</ion-button>
-        <ion-button (click)="ponto()" class="opera">,</ion-button>
+        <ion-button (click)="func_raiz()">√</ion-button>
+        <ion-button (click)="func_paren2()">)</ion-button>
+        <ion-button (click)="func_digitos('9')">9</ion-button>
+        <ion-button (click)="func_digitos('6')">6</ion-button>
+        <ion-button (click)="func_digitos('3')">3</ion-button>
+        <ion-button (click)="func_ponto()">,</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="divi()" class="opera">/</ion-button>
-        <ion-button (click)="multi()" class="opera">x</ion-button>
-        <ion-button (click)="sub()" class="opera">-</ion-button>
-        <ion-button (click)="soma()" class="opera">+</ion-button>
-        <ion-button id="igual" (click)="resultado()">=</ion-button>
+        <ion-button (click)="func_divi()">/</ion-button>
+        <ion-button (click)="func_multi()">x</ion-button>
+        <ion-button (click)="func_sub()">-</ion-button>
+        <ion-button (click)="func_soma()">+</ion-button>
+        <ion-button id="igual" (click)="func_resultado()">=</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
