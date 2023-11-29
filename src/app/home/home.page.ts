@@ -240,7 +240,7 @@ export class HomePage {
     if (this.conta == "0"){
       this.conta=""
     }
-    this.conta += "*"
+    
     this.resultado += "√"
     this.raizCheck = true
     this.sinalcheck = 1
@@ -261,6 +261,7 @@ export class HomePage {
 
 
   func_resultado(){
+    
     if (this.raizCheck == true){
       this.conta += this.raizInt2
     }
@@ -270,6 +271,7 @@ export class HomePage {
     this.conta = eval(this.conta)
     this.calculo = this.resultado
     this.resultado = "= "+this.conta
+    
     this.calculo = this.calculo.replace("=","")
     this.resultadosHist.unshift(this.resultado)
     this.calculosHist.unshift(this.calculo)
@@ -277,6 +279,7 @@ export class HomePage {
     this.delNot = true
     this.raizCheck = false
     this.limphist++
+    
   }
 
 
